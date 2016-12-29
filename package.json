@@ -1,6 +1,6 @@
 {
   "name": "react-bootstrap-daterangepicker",
-  "version": "3.2.2",
+  "version": "3.2.2.1",
   "description": "A date/time picker for react (using bootstrap). This is a react port of: https://github.com/dangrossman/bootstrap-daterangepicker",
   "main": "./lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "skratchdot",
   "repository": {
     "type": "git",
-    "url": "git://github.com/skratchdot/react-bootstrap-daterangepicker.git"
+    "url": "git+https://github.com/piplcom/react-bootstrap-daterangepicker.git"
   },
   "bugs": {
     "url": "https://github.com/skratchdot/react-bootstrap-daterangepicker/issues"
