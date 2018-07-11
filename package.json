@@ -2,11 +2,11 @@
   "name": "react-bootstrap-daterangepicker",
   "version": "4.0.0",
   "description": "A date/time picker for react (using bootstrap). This is a react port of: https://github.com/dangrossman/bootstrap-daterangepicker",
-  "main": "./lib/index.js",
+  "main": "./distribution/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "changelog": "github_changelog_generator -u skratchdot -p react-bootstrap-daterangepicker",
-    "build": "gulp build"
+    "build": "babel lib --out-dir distribution"
   },
   "author": "skratchdot",
   "repository": {
@@ -26,6 +26,7 @@
     "react": ">=15.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",

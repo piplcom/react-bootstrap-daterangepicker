@@ -1,4 +1,5 @@
 'use strict';
+
 var PropTypes = require('prop-types');
 /**
  * react-bootstrap-daterangepicker.js
@@ -15,9 +16,11 @@ var getOptions = require('./get-options.js');
 
 /* this is our export React class */
 module.exports = createReactClass({
+	displayName: 'exports',
+
 	$picker: null,
 	options: getOptions(),
-	makeEventHandler: function (eventType) {
+	makeEventHandler: function makeEventHandler(eventType) {
 		return function (event, picker) {
 			if (typeof this.props.onEvent === 'function') {
 				this.props.onEvent(event, picker);
@@ -27,7 +30,7 @@ module.exports = createReactClass({
 			}
 		}.bind(this);
 	},
-	getOptionsFromProps: function (props) {
+	getOptionsFromProps: function getOptionsFromProps(props) {
 		var options;
 		props = props || this.props;
 		this.options.forEach(function (option) {
@@ -38,7 +41,7 @@ module.exports = createReactClass({
 		});
 		return options || {};
 	},
-	setOptionsFromProps: function (currentOptions) {
+	setOptionsFromProps: function setOptionsFromProps(currentOptions) {
 		var keys = Object.keys(currentOptions);
 		var $this = this;
 		if ($this.$picker) {
@@ -57,7 +60,7 @@ module.exports = createReactClass({
 			}
 		}
 	},
-	componentWillReceiveProps: function(nextProps) {
+	componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
 		var $this = this;
 		if ($this.$picker) {
 			var currentOptions = $this.getOptionsFromProps();
@@ -71,18 +74,18 @@ module.exports = createReactClass({
 			$this.setOptionsFromProps(changedOptions);
 		}
 	},
-	componentDidMount: function () {
+	componentDidMount: function componentDidMount() {
 		this.initializeDateRangePicker();
 	},
-	componentWillUnmount: function () {
+	componentWillUnmount: function componentWillUnmount() {
 		this.removeDateRangePicker();
 	},
-	removeDateRangePicker: function() {
+	removeDateRangePicker: function removeDateRangePicker() {
 		this.$picker.data('daterangepicker').remove();
 	},
-	initializeDateRangePicker: function() {
+	initializeDateRangePicker: function initializeDateRangePicker() {
 		var $this = this;
-		$ = (window.jQuery && window.jQuery.fn.daterangepicker)? window.jQuery : $;
+		$ = window.jQuery && window.jQuery.fn.daterangepicker ? window.jQuery : $;
 		$this.$picker = $(this.refs.picker);
 		// initialize
 		$this.$picker.daterangepicker(this.getOptionsFromProps());
@@ -102,22 +105,13 @@ module.exports = createReactClass({
 		cancelClass: PropTypes.string,
 		dateLimit: PropTypes.object,
 		drops: PropTypes.oneOf(['down', 'up']),
-		endDate: PropTypes.oneOfType([
-			PropTypes.object,
-			PropTypes.string,
-		]),
+		endDate: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 		isCustomDate: PropTypes.bool,
 		isInvalidDate: PropTypes.func,
 		linkedCalendars: PropTypes.bool,
 		locale: PropTypes.object,
-		maxDate: PropTypes.oneOfType([
-			PropTypes.object,
-			PropTypes.string,
-		]),
-		minDate: PropTypes.oneOfType([
-			PropTypes.object,
-			PropTypes.string,
-		]),
+		maxDate: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+		minDate: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 		onApply: PropTypes.func,
 		onCancel: PropTypes.func,
 		onEvent: PropTypes.func,
@@ -133,20 +127,17 @@ module.exports = createReactClass({
 		showISOWeekNumbers: PropTypes.bool,
 		showWeekNumbers: PropTypes.bool,
 		singleDatePicker: PropTypes.bool,
-		startDate: PropTypes.oneOfType([
-			PropTypes.object,
-			PropTypes.string,
-		]),
+		startDate: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 		template: PropTypes.any,
 		timePicker: PropTypes.bool,
 		timePickerIncrement: PropTypes.number,
 		timePicker24Hour: PropTypes.bool,
-		timePickerSeconds: PropTypes.bool,
+		timePickerSeconds: PropTypes.bool
 	},
-	render: function () {
-		var props = objectAssign({ref: 'picker'}, this.props);
+	render: function render() {
+		var props = objectAssign({ ref: 'picker' }, this.props);
 
-		Object.keys(this.constructor.propTypes).forEach(function(key) {
+		Object.keys(this.constructor.propTypes).forEach(function (key) {
 			delete props[key];
 		});
 
